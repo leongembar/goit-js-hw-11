@@ -26,3 +26,29 @@
   background-size: cover;
   background-position: center;
 }
+.search-form{
+  margin: 40px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.photo-card {
+  position: relative;
+  width: 400px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.load-more-hidden{
+  display: none;
+}
+
+.load-more{
+  margin: 40px;
+}
