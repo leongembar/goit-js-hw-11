@@ -1,7 +1,7 @@
 import axios from "axios";
 import Notiflix from 'notiflix';
 
-refs = {
+const refs = {
     searchForm: document.querySelector('.search-form'),
     search: document.querySelector('.search'),
     submitBtn: document.querySelector('.submit'),
@@ -9,6 +9,7 @@ refs = {
     loadBtn: document.querySelector('.load-more'),
 
 }
+
 let pageN = 1;
 let searchQuery = null;
 const perPage = 20;
