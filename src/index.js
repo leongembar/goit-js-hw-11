@@ -12,7 +12,7 @@ const refs = {
 
 let pageN = 1;
 let searchQuery = null;
-const perPage = 20;
+const perPage = 40;
 let totalHits = 0;
 let dataTotal = 0;
 
