@@ -23,10 +23,15 @@ async function submitClick(e){
     totalHits=0;
 
     const form = e.currentTarget;
-    searchQuery = form.elements.searchQuery.value;
+    searchQuery = form.elements.searchQuery.value.trim();
+    if (!searchQuery){
+        Notiflix.Notify.failure('Sorry, enter at least one symbol.');
+        return;
+    }
 
     await fetchAndRenderPhoto(searchQuery);
     hiddenBtn();
+    pageN +=1;
 
 }
 
@@ -41,8 +46,7 @@ async function fetchAndRenderPhoto(termin){
         }
         totalHits = data.totalHits;
         renderCard(data.hits, refs.container);        
-        pageN +=1;
-
+        
     }
     catch(error){
         Notiflix.Notify.failure("Oops! Something went wrong! Try reloading the page!");
@@ -99,14 +103,22 @@ refs.loadBtn.addEventListener("click", ((e)=>{
     e.preventDefault();
     fetchAndRenderPhoto(searchQuery)
     hiddenBtn();
+    pageN +=1;
 }));
 
 function hiddenBtn(){
     if (pageN*perPage >= totalHits){
+
         refs.loadBtn.classList.add('load-more-hidden');
+        if (dataTotal <= perPage){
+            Notiflix.Notify.failure(`We're sorry, find ${dataTotal} results.`);
+            return;
+        }
         if (dataTotal !== 0 ){
             Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
+            
         }
+        
         
     }
     else {
